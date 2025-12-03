@@ -1,0 +1,3 @@
+# Select Important Columns for Model:
+      df1 = df[["survived","pclass","sex","age","embarked","alone"]].copy()
+      df1
