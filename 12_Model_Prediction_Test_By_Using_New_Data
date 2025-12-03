@@ -1,0 +1,44 @@
+# Make a Prediction by using the new data, whether the model can predict survival for new data.
+
+# Example new passenger data
+# Let's say we have a 30-year-old female in first class, embarked from Cherbourg, not alone.
+new_passenger = pd.DataFrame({
+    'pclass': [1],
+    'sex': ['female'],
+    'age': [30.0],
+    'embarked': ['C'],
+    'alone': [False]
+})
+
+print("Original new passenger data:")
+display(new_passenger)
+
+# Apply the same preprocessing steps
+
+# 1. Encoding categorical features (sex, embarked, alone)
+# Based on previous LabelEncoder transformations:
+# sex: female = 0, male = 1
+# embarked: C = 0, Q = 1, S = 2
+# alone: False = 0, True = 1
+
+new_passenger['sex'] = new_passenger['sex'].map({'female': 0, 'male': 1})
+new_passenger['embarked'] = new_passenger['embarked'].map({'C': 0, 'Q': 1, 'S': 2})
+new_passenger['alone'] = new_passenger['alone'].map({False: 0, True: 1})
+
+# 2. Scaling the age column using the previously fitted StandardScaler (scl)
+new_passenger['age'] = scl.transform(new_passenger[['age']])
+
+print("\nPreprocessed new passenger data:")
+display(new_passenger)
+
+# 3. Make the prediction
+predicted_survival = model.predict(new_passenger)
+predicted_proba = model.predict_proba(new_passenger)[:, 1] # Probability of survival
+
+print(f"\nPredicted survival (0=No, 1=Yes): {predicted_survival[0]}")
+print(f"Probability of survival: {predicted_proba[0]:.4f}")
+
+if predicted_survival[0] == 1:
+    print("The model predicts that this passenger would survive.")
+else:
+    print("The model predicts that this passenger would not survive.")
