@@ -42,3 +42,10 @@ if predicted_survival[0] == 1:
     print("The model predicts that this passenger would survive.")
 else:
     print("The model predicts that this passenger would not survive.")
+
+    
+                                                            # Result : 
+                                                            # Predicted survival (0=No, 1=Yes): 1
+                                                            # Probability of survival: 0.9102
+                                                            # Model Score is = almost 76%
+                                                            # The model predicts that this passenger would survive.
