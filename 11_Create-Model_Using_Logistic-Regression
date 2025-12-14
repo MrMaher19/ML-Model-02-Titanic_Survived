@@ -1,3 +1,0 @@
-# Model :
-    model = LogisticRegression()
-    model.fit(x_train,y_train)
