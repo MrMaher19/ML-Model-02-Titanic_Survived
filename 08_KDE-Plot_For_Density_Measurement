@@ -1,6 +1,0 @@
-# Histogram
-sns.histplot(df1['age'], kde=True)
-plt.title('Histogram of Scaled Age in df1')
-plt.xlabel('Scaled Age')
-plt.ylabel('Frequency')
-plt.show()
