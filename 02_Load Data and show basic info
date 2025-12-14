@@ -1,8 +1,0 @@
-# Load Dataset :
-      df = sns.load_dataset("titanic")
-      df["survived"].value_counts()
-      df.isna().sum()
-      df.duplicated().sum()
-      df.info()
-      df.describe()
-
